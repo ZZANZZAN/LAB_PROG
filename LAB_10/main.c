@@ -4,7 +4,7 @@
 #include <ctype.h>
 #define MAXLEN 256
 
-typedef struct ZNAK {
+typedef struct ZNAK { // структура содержащая информационные поля 
     char NAME[MAXLEN];
     char NIK[MAXLEN];
     int DATE[3];
@@ -15,29 +15,20 @@ typedef struct ZNAK {
 } group;
 
 struct node{
-
-    group *data;
-    struct node *next;
+    group *data;        // информационное поле
+    struct node *next;  // указатель на следующую структуру 
 };
 typedef struct node node;
 
-char **simple_split(char *str, int length, char sep);
-
-void ClearStringArray(char **str, int n);
-
-group *new_struct();
-
-group *struct_fill(char **str);
-
-node *create_node(group *data);
-
-void print_list(node **head);
-
-void add(node **head, group *data);
-
-void add_last(node **tail, group *data);
-
-void insert_after(node *head, int index, group *value);
+char **simple_split(char *str, int length, char sep);   //функция заполнения массива для дальнейшего заполнения списка 
+void ClearStringArray(char **str, int n);               //функция очистки массива 
+group *new_struct();                                    //функция запроса данных для новой структуры 
+group *struct_fill(char **str);                         //функция заполнения новой структуры
+node *create_node(group *data);                         //функция создания новой структуры 
+void print_list(node **head);                           // функция вывода структуры 
+//void add(node **head, group *data);                   // функция в процессе доработки
+//void add_last(node **tail, group *data);              // функция в процессе доработки
+void insert_after(node *head, int index, group *value); // функция добавления структуры в список 
 
 int main(){
     group **ch=NULL;
@@ -45,18 +36,18 @@ int main(){
     char **s2=NULL;
     char s1[MAXLEN];
     char sep,choose;
-    FILE *df;
-    node *head = NULL;
+    FILE *df; 
+    node *head = NULL; //инициализация головы списка
     node *tail = NULL;
     node *temp, *p;
 
     sep=';';
 
-    df=fopen("struct-data-03.csv","r");
-    if(df!=NULL){
+    df=fopen("struct-data-03.csv","r"); //открытие файла
+    if(df!=NULL){ // проверка на открытие
         n=0;
-        while((fgets(s1,MAXLEN,df))!=NULL) n++;
-        rewind(df);
+        while((fgets(s1,MAXLEN,df))!=NULL) n++; //подсчет строк в файле 
+        rewind(df); // переход в начало файла 
         ch=(group**)malloc(n*sizeof(group*));
         puts("Initial array:");
         if(ch!=NULL){
@@ -81,41 +72,41 @@ int main(){
               temp -> next = p;
               temp = p;
             }
-            print_list(&head);
+            print_list(&head); //вывод списка
             }
         i=9;
-        while(i!=0){
+        while(i!=0){ //цикл для работы со структурой
             printf("Menu:\n");
-            printf("1 - Add stuct\n");
-            printf("2 - Print struct\n");
-            printf("0 - Exit\n");
+            printf("1 - Add stuct\n"); //добавить структуру
+            printf("2 - Print struct\n"); //вывести таблицу со структурой 
+            printf("0 - Exit\n"); //завершить работу со структурой
             scanf("%d", &i);
             getchar();
             if(i == 1){
                 int a = 0;
                 printf("\n");
-                printf("Index struct:\n");
+                printf("Index struct:\n"); // запрос места новой структуры
                 scanf("%d", &a);
 
-                printf("bingo%d\n", a);
-                group *str0=NULL;
-                str0=(group*)malloc(sizeof(group));
-                str0 = new_struct();
-                insert_after(head, a, str0);
+                //printf("bingo%d\n", a); //отладосное сообщение
+                group *str0=NULL; //инициализация структуры для дальнейшей вставки 
+                str0=(group*)malloc(sizeof(group)); //выделение памяти под структуру
+                str0 = new_struct(); // запрос данных для структуры 
+                insert_after(head, a, str0); //вставка в список 
             }
             if(i == 2){
-                print_list(&head);
+                print_list(&head); // вывод списка
             }
         }
     }
     else puts("File not found!");
 }
 
-node *create_node(group *data){
+node *create_node(group *data){ // создание структуры 
       node *temp;
       temp = (node *)malloc(sizeof(node));
-      temp -> data = data;
-      temp -> next = NULL;
+      temp -> data = data; //запись информационных полей
+      temp -> next = NULL; //обнуление указателя на следующую структуру
       return temp;
 }
 
@@ -136,7 +127,7 @@ void print_list(node **head){
           p = p->next;
       }
 }
-
+/* В этой версии не доступны 
 void add(node **head, group *data){
     node *temp = (node *)malloc(sizeof(node));
     temp -> data = (group**)malloc(sizeof(group*));
@@ -152,7 +143,7 @@ void add_last(node **tail, group *data){
     (*tail)->next = temp;
     *tail = temp;
 }
-
+*/
 void insert_after(node *head, int index, group *value){
     int i;
     node *p = head;
