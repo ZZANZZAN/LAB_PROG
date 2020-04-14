@@ -43,7 +43,7 @@ void print_header();
 
 int main(){
     group **ch=NULL;
-    int slen,i,n,count;
+    int slen,i,number_of_lines,count;
     char **s2=NULL;
     char **s3=NULL;
     char s1[MAXLEN];
@@ -56,11 +56,9 @@ int main(){
 
     df=fopen("struct-data-03.csv","r");
     if(df!=NULL){
-        n=0;
-        while((fgets(s1,MAXLEN,df))!=NULL) n++;
+        number_of_lines=0;
+        while((fgets(s1,MAXLEN,df))!=NULL) number_of_lines++;
         rewind(df);
-
-        puts("Initial array:");
         ////////////////
         fgets(s1,MAXLEN,df);
         slen=strlen(s1);
@@ -71,7 +69,7 @@ int main(){
         s3 = struct_fill(s2);
         temp=create_node(s3);
         head = temp;
-        for(i=0,count=0;i<n-1;i++,count++){
+        for(i=0,count=0;i<number_of_lines-1;i++,count++){
             fgets(s1,MAXLEN,df);
             slen=strlen(s1);
             s1[slen-1]='\0';
@@ -102,12 +100,21 @@ int main(){
                 printf("\n");
                 printf("Index struct:\n");
                 scanf("%d", &a);
-                a--;
+                if(a > number_of_lines || a < 1){
+                    a = 1;
+                }
                 //printf("bingo%d\n", a);
                 group *str0=NULL;
                 str0=(group*)malloc(sizeof(group));
                 str0 = new_struct();
-                insert_after(head, a, str0);
+                if(a != 1){
+                    a--;
+                    insert_after(head, a, str0);printf("bingo\n");
+                }
+                else{
+                    add(&head, str0);
+                }
+                number_of_lines++;
             }
             if(i == 2){
                 print_header();
@@ -127,6 +134,7 @@ node *create_node(group *data){
 }
 
 void print_header() {
+    printf("Initial array:\n");
     printf("| %20s|%10s|%10s|%5s|%5s|%10s|%10s|\n", "NAME", "Nik", "Date", "int1", "int2", "float1", "float2");
     printf("+---------------------+----------+----+--+--+-----+-----+----------+----------+\n");
 }
@@ -136,7 +144,7 @@ void print_list(node **head){
       node *p;
       p = *head;
       while(p != NULL){
-          printf("|%20s |%10s|%2d|%2d|%2d|%5d|%5d|%10f|%10f|\n",
+          printf("|%20s |%10s|%4d|%2d|%2d|%5d|%5d|%10f|%10f|\n",
             p -> data ->NAME,
             p -> data ->NIK,
             p -> data ->DATE[0],
@@ -173,8 +181,8 @@ void insert_after(node *head, int index, group *value){
     node *temp;
     //p = (node*)malloc(sizeof(node));
     temp = (node*)malloc(sizeof(node));
-    i = 0;
     //printf("bingo%d\n", index);
+    i = 0;
     while (i < index - 1){//printf("bingo\n");
         p = p->next;
         i++;
