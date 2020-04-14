@@ -35,7 +35,7 @@ void print_list(node **head);
 
 void add(node **head, group *data);
 
-void add_last(node **tail, group *data);
+//void add_last(node **tail, group *data); //dont use in this version 
 
 void insert_after(node *head, int index, group *value);
 
@@ -166,7 +166,7 @@ void add(node **head, group *data){
     temp -> data = data;
     *head = temp;
 }
-
+/*    //dont use in this version 
 void add_last(node **tail, group *data){
     node *temp = (node *)malloc(sizeof(node));
     temp -> next = NULL;
@@ -174,7 +174,7 @@ void add_last(node **tail, group *data){
     (*tail)->next = temp;
     *tail = temp;
 }
-
+*/
 void insert_after(node *head, int index, group *value){
     int i;
     node *p = head;
