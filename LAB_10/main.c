@@ -94,7 +94,7 @@ void menu(node *head, int number_of_lines){
         if(i == 1){
             int a = 0;
             printf("\n");
-            printf("Index struct:\n");
+            printf("Index struct (input 1 to %d):\n", number_of_lines);
             scanf("%d", &a);
             if(a > number_of_lines || a < 1){
                 a = 1;
