@@ -35,11 +35,13 @@ void print_list(node **head);
 
 void add(node **head, group *data);
 
-//void add_last(node **tail, group *data); //dont use in this version 
+void add_last(node **tail, group *data);
 
 void insert_after(node *head, int index, group *value);
 
 void print_header();
+
+void menu(node *head, int number_of_lines);
 
 int main(){
     group **ch=NULL;
@@ -85,42 +87,7 @@ int main(){
         print_header();
         print_list(&head);
         ////////////////////////
-        i=9;
-        while(i!=0){
-            printf("| | Menu:         |\n");
-            printf("+-+---------------+\n");
-            printf("|1| - Add stuct   |\n");
-            printf("|2| - Print struct|\n");
-            printf("|0| - Exit        |\n");
-            printf("Your choice:\n");
-            scanf("%d", &i);
-            getchar();
-            if(i == 1){
-                int a = 0;
-                printf("\n");
-                printf("Index struct:\n");
-                scanf("%d", &a);
-                if(a > number_of_lines || a < 1){
-                    a = 1;
-                }
-                //printf("bingo%d\n", a);
-                group *str0=NULL;
-                str0=(group*)malloc(sizeof(group));
-                str0 = new_struct();
-                if(a != 1){
-                    a--;
-                    insert_after(head, a, str0);printf("bingo\n");
-                }
-                else{
-                    add(&head, str0);
-                }
-                number_of_lines++;
-            }
-            if(i == 2){
-                print_header();
-                print_list(&head);
-            }
-        }
+        menu(head, number_of_lines);
     }
     else puts("File not found!");
 }
@@ -159,6 +126,45 @@ void print_list(node **head){
       printf("\n");
 }
 
+void menu(node *head, int number_of_lines){
+    int i = 9;
+    while(i!=0){
+        printf("| | Menu:         |\n");
+        printf("+-+---------------+\n");
+        printf("|1| - Add stuct   |\n");
+        printf("|2| - Print struct|\n");
+        printf("|0| - Exit        |\n");
+        printf("Your choice:\n");
+        scanf("%d", &i);
+        getchar();
+        if(i == 1){
+            int a = 0;
+            printf("\n");
+            printf("Index struct:\n");
+            scanf("%d", &a);
+            if(a > number_of_lines || a < 1){
+                a = 1;
+            }
+            //printf("bingo%d\n", a);
+            group *str0=NULL;
+            str0=(group*)malloc(sizeof(group));
+            str0 = new_struct();
+            if(a != 1){
+                a--;
+                insert_after(head, a, str0);printf("bingo\n");
+            }
+            else{
+                add(&head, str0);
+            }
+            number_of_lines++;
+            }
+        if(i == 2){
+            print_header();
+            print_list(&head);
+        }
+    }
+}
+
 void add(node **head, group *data){
     node *temp = (node *)malloc(sizeof(node));
     temp -> data = (group**)malloc(sizeof(group*));
@@ -166,7 +172,7 @@ void add(node **head, group *data){
     temp -> data = data;
     *head = temp;
 }
-/*    //dont use in this version 
+
 void add_last(node **tail, group *data){
     node *temp = (node *)malloc(sizeof(node));
     temp -> next = NULL;
@@ -174,7 +180,7 @@ void add_last(node **tail, group *data){
     (*tail)->next = temp;
     *tail = temp;
 }
-*/
+
 void insert_after(node *head, int index, group *value){
     int i;
     node *p = head;
