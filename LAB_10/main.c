@@ -105,7 +105,7 @@ void menu(node *head, int number_of_lines){
             str0 = new_struct();
             if(a != 1){
                 a--;
-                insert_after(head, a, str0);printf("bingo\n");
+                insert_after(head, a, str0);//printf("bingo\n");
             }
             else{
                 add(&head, str0);
