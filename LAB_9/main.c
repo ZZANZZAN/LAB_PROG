@@ -84,20 +84,29 @@ int main() {
                     }
                 }
             }
+            VIVOD();
+            for (i = 0; i < number_of_lines; i++) {
+                printf("|%20s |%10s|%2d|%2d|%2d|%5d|%5d|%10f|%10f|\n",
+                       tab[i].NAME,
+                       tab[i].NIK,
+                       tab[i].DATE[0],
+                       tab[i].DATE[1],
+                       tab[i].DATE[2],
+                       tab[i].chislopole1,
+                       tab[i].chislopole2,
+                       tab[i].chislopole3,
+                       tab[i].chislopole4);
+            }
 
             char bukva[125];
             int stolbec;
 
-            printf("Pervaia bukva znaka zodiaka: ");
+            printf("\nDannie dla poiska: ");
             gets(bukva);
 
             count = 0;
             printf("Kakoi stolbec vibrat` (1- NAME, 2- NIC): ");
             scanf("%d", &stolbec);
-
-
-
-
 
             for (i = 0; i < number_of_lines; i++) {
 
@@ -187,6 +196,6 @@ void clear_str_array(char **str, int n) {
 }
 
 void print_header() {
-    printf("| %20s|%10s|%10s|%5s|%5s|%10s|%10s|\n", "NAME", "Nik", "Date", "int1", "int2", "float1", "float2");
+    printf("| %20s|%10s|%10s|%5s|%5s|%10s|%10s|\n", "NAME", "Zod", "Date", "int1", "int2", "float1", "float2");
     printf("+---------------------+----------+----+--+--+-----+-----+----------+----------+\n");
 }
