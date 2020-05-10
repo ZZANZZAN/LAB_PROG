@@ -69,7 +69,7 @@ node *add_first_DLL(head *q){
     q -> N += 1;
     q -> first = temp;
 
-    return temp;
+    //return temp;
 }
 
 
@@ -104,19 +104,17 @@ void delete_node_DLL(node *temp, head *q){
     free_node(temp);
 }
 
-void insert_after_DLL(node *head, int index, group *value){
-    int i;
-    node *p = head;
-    node *temp;
-    //p = (node*)malloc(sizeof(node));
+void insert_after_DLL(node *lst){
+    node *temp, *p;
     temp = (node*)malloc(sizeof(node));
-    //printf("bingo%d\n", index);
-    i = 0;
-    while (i < index - 1){//printf("bingo\n");
-        p = p->next;
-        i++;
-    }
-    temp = create_node_DLL(value);
-    temp->next = p->next;
-    p->next = temp;
+    malloc_node(temp);
+    p = lst->next;
+    lst->next = temp;
+    temp->next = p;
+    temp->prev = lst;
+    temp -> id = ((lst -> id) + 1);
+    if (p != NULL)
+        p->prev = temp;
+
+    return(temp);
 }
