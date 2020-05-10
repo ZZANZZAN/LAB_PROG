@@ -63,7 +63,12 @@ void enterFromKeyboard(head *q)
 {
     node *temp = NULL;
     int k;
-    printf("\nChoose:\n1) add first\n2) add end\n\ncommand:");
+    printf("\n| | Add:        |\n");
+    printf("+-+---------------+\n");
+    printf("|1| - Add first   |\n");
+    printf("|2| - Add end     |\n");
+    printf("|3| - Enter index |\n");
+    printf("Your choice:\n");
     scanf("%d", &k);
     if((q -> N) == 0) temp = create_node_DLL(q);
     else{
@@ -72,6 +77,10 @@ void enterFromKeyboard(head *q)
             temp = q -> last;
         }
         else if(k == 1){
+             add_first_DLL(q);
+             temp = q -> first;
+        }
+        else if(k == 3){
              add_first_DLL(q);
              temp = q -> first;
         }
@@ -87,13 +96,13 @@ void enterFromKeyboard(head *q)
     scanf("%s", (temp -> data -> NIK));
 
     printf("Enter year: ");
-    scanf("%f", &(temp -> data -> DATE[0]));
+    scanf("%d", &(temp -> data -> DATE[0]));
 
     printf("Enter mounth: ");
-    scanf("%f", &(temp -> data -> DATE[1]));
+    scanf("%d", &(temp -> data -> DATE[1]));
 
     printf("Enter day: ");
-    scanf("%f", &(temp -> data -> DATE[2]));
+    scanf("%d", &(temp -> data -> DATE[2]));
 
     puts("Enter like chislo:");
     scanf("%d", &(temp -> data -> chislopole1));
