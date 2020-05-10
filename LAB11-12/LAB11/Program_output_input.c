@@ -84,11 +84,16 @@ void enterFromKeyboard(head *q)
         else if(k == 3){
             printf("Enter index:");
             scanf("%d", &index);
+            if(index > q -> N || index < 1){
+                add_first_DLL(q);
+                temp = q -> first;
+            }else{
             while (i < index - 1){//printf("bingo\n");
                 p = p->next;
                 i++;
             }
             temp = insert_after_DLL(p);
+            }
             //temp = q -> first;
         }
     }
