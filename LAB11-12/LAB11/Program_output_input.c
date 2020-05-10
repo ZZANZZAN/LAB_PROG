@@ -62,7 +62,8 @@ void output_list_reverse(head *q){
 void enterFromKeyboard(head *q)
 {
     node *temp = NULL;
-    int k;
+    node *p = q -> first;
+    int k, index, i = 0;
     printf("\n| | Add:        |\n");
     printf("+-+---------------+\n");
     printf("|1| - Add first   |\n");
@@ -77,12 +78,18 @@ void enterFromKeyboard(head *q)
             temp = q -> last;
         }
         else if(k == 1){
-             add_first_DLL(q);
-             temp = q -> first;
+            add_first_DLL(q);
+            temp = q -> first;
         }
         else if(k == 3){
-             add_first_DLL(q);
-             temp = q -> first;
+            printf("Enter index:");
+            scanf("%d", &index);
+            while (i < index - 1){//printf("bingo\n");
+                p = p->next;
+                i++;
+            }
+            temp = insert_after_DLL(p);
+            //temp = q -> first;
         }
     }
 
