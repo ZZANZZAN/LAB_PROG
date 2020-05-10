@@ -23,7 +23,7 @@ void command_selecting(head *q){
             }
     }
 
-    while(f != 4){
+    while(f != 0){
         if(str_len(s) == 0){
             if(f == 1)
                 enterFromKeyboard(q);
@@ -36,7 +36,11 @@ void command_selecting(head *q){
             }
         }
 
-            printf("\nSelect a command:\n1) Add\n2) Delete by search\n3) database\n4) Exit\n\nCommand:");
+            printf("\n| | Menu:         |\n");
+            printf("+-+---------------+\n");
+            printf("|1| - Add stuct   |\n");
+            printf("|2| - Print struct|\n");
+            printf("|0| - Exit        |\n");
             scanf("%s", &s);
             f = charToInt(s[0]);
     }
