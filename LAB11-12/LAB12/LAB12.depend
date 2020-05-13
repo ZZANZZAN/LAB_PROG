@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1589410707 source:d:\Нужно\programming\lab12\command_selecting.c
+	"HF/command_selecting.h"
+
+1589137393 d:\Нужно\programming\lab12\hf\command_selecting.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"option_With_List.h"
+	"Program_output_input.h"
+	"split.h"
+	"search.h"
+
+1589403612 d:\Нужно\programming\lab12\hf\option_with_list.h
+	"free_List.h"
+	"struct.h"
+	<malloc.h>
+	<stdlib.h>
+
+1589058158 d:\Нужно\programming\lab12\hf\free_list.h
+	"struct.h"
+	<stdlib.h>
+
+1589409452 d:\Нужно\programming\lab12\hf\struct.h
+	<stdlib.h>
+
+1589128577 d:\Нужно\programming\lab12\hf\program_output_input.h
+	<stdio.h>
+	"struct.h"
+	<stdlib.h>
+	"option_With_List.h"
+	"split.h"
+	<string.h>
+
+1589133576 d:\Нужно\programming\lab12\hf\split.h
+	"option_With_List.h"
+	"struct.h"
+	<stdlib.h>
+
+1589138703 d:\Нужно\programming\lab12\hf\search.h
+	"struct.h"
+	"option_With_List.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1589409470 source:d:\Нужно\programming\lab12\free_list.c
+	"HF/free_List.h"
+
+1589137198 source:d:\Нужно\programming\lab12\main.c
+	<stdio.h>
+	<stdlib.h>
+	"HF\option_With_LIst.h"
+	"HF\struct.h"
+	"HF\free_List.h"
+	"HF\Program_output_input.h"
+	"HF\command_selecting.h"
+
+1589410916 source:d:\Нужно\programming\lab12\program_output_input.c
+	"HF/Program_output_input.h"
+
+1589408130 source:d:\Нужно\programming\lab12\search.c
+	"HF/search.h"
+
+1589408138 source:d:\Нужно\programming\lab12\split.c
+	"HF/split.h"
+
+1589410481 source:d:\Нужно\programming\lab12\option_with_list.c
+	"HF/option_With_List.h"
+
