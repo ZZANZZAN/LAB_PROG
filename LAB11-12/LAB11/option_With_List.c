@@ -104,7 +104,7 @@ void delete_node_DLL(node *temp, head *q){
     free_node(temp);
 }
 
-node insert_after_DLL(node *lst){
+node edit_DLL(node *lst){
     node *temp, *p;
     temp = (node*)malloc(sizeof(node));
     malloc_node(temp);
@@ -117,5 +117,28 @@ node insert_after_DLL(node *lst){
         p->prev = temp;
 
 
-//return(temp);
+//return temp;
+}
+
+node *insert_after_DLL(node *lst, int N){
+    node *temp, *p;
+    temp = (node*)malloc(sizeof(node));
+    malloc_node(temp);
+    p = lst->prev;
+    p -> next = temp;
+    temp -> prev = p;
+    temp -> next = lst;
+    lst -> prev = temp;
+
+    temp -> id = (lst -> id);
+    lst -> id += 1;
+    while(lst -> next != NULL){
+        lst = lst -> next;
+        lst -> id += 1;
+    }
+    if (p != NULL)
+        p->prev = temp;
+
+
+return temp;
 }
