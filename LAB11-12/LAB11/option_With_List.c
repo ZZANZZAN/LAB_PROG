@@ -63,12 +63,16 @@ node *add_first_DLL(head *q){
 
     temp -> prev = NULL;
     temp -> next = (q -> first);
-    temp -> id = ((q -> N) + 1);
+    temp -> id = 1;
 
     q -> first -> prev = temp;
     q -> N += 1;
     q -> first = temp;
 
+    while(temp -> next != NULL){
+        temp = temp -> next;
+        temp -> id += 1;
+    }
     //return temp;
 }
 
