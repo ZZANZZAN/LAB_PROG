@@ -2,13 +2,14 @@
 
 void print_header() {
     printf("Initial array:\n");
-    printf("| %20s|%10s|%10s|%5s|%5s|%10s|%10s|\n", "NAME", "Nik", "Date", "int1", "int2", "float1", "float2");
-    printf("+---------------------+----------+----+--+--+-----+-----+----------+----------+\n");
+    printf("|%2s| %20s|%10s|%10s|%5s|%5s|%10s|%10s|\n","N", "NAME", "Nik", "Date", "int1", "int2", "float1", "float2");
+    printf("+--+---------------------+----------+----+--+--+-----+-----+----------+----------+\n");
 }
 
 
 void *output_node(node *temp){
-    printf("|%20s |%10s|%4d|%2d|%2d|%5d|%5d|%10f|%10f|\n",
+    printf("|%2d|%20s |%10s|%4d|%2d|%2d|%5d|%5d|%10f|%10f|\n",
+            temp -> id,
             temp -> data ->NAME,
             temp -> data ->NIK,
             temp -> data ->DATE[0],
@@ -64,7 +65,7 @@ void enterFromKeyboard(head *q)
     node *temp = NULL;
     node *p = q -> first;
     int k, index, i = 0;
-    printf("\n| | Add:        |\n");
+    printf("\n| | Add:          |\n");
     printf("+-+---------------+\n");
     printf("|1| - Add first   |\n");
     printf("|2| - Add end     |\n");
@@ -84,22 +85,20 @@ void enterFromKeyboard(head *q)
         else if(k == 3){
             printf("Enter index:");
             scanf("%d", &index);
-            if(index > q -> N || index < 1){
+            if(index > q -> N || index <= 1){
                 add_first_DLL(q);
                 temp = q -> first;
             }else{
-            while (i < index - 1){//printf("bingo\n");
-                p = p->next;
-                i++;
-            }
-            temp = insert_after_DLL(p);
+                q -> N += 1;
+                while (i < index - 1){//printf("bingo\n");
+                    p = p->next;
+                    i++;
+                }
+            temp = insert_after_DLL(p, q -> N);
             }
             //temp = q -> first;
         }
     }
-
-    printf("\nStructure of an extension to a table:\n");
-    printf("Enter the information , otherwise press 'Enter'\n");
 
     printf("Enter name: ");
     scanf("%s", (temp -> data -> NAME));
