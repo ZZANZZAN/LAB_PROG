@@ -16,10 +16,16 @@ void command_selecting(head *q){
                 enterFromKeyboard(q);
             else if(f == 2){
                 int f1;
-                printf("\nSelect the printing method:\n1) At first\n2) From the end\n\nCommand:");
+                //printf("\nSelect the printing method:\n1) At first\n2) From the end(do not work in this version)\n\nCommand:");
+                printf("| | Select the printing method:                |\n");
+                printf("+-+--------------------------------------------+\n");
+                printf("|1| - At first                                 |\n");
+                printf("|2| - From the end(do not work in this version)|\n");
+                //printf("|0| - Exit        |\n");
+                printf("Command:\n");
                 scanf("%d", &f1);
                 if(f1 == 1) output_list(q);
-                else if(f1 == 2) output_list_reverse(q);
+                //else if(f1 == 2) output_list_reverse(q);
             }
     }
 
@@ -29,10 +35,15 @@ void command_selecting(head *q){
                 enterFromKeyboard(q);
             else if(f == 2){
                 int f1;
-                printf("\nSelect the printing method:\n1) At first\n2) From the end\n\nCommand:");
+                printf("| | Select the printing method:                |\n");
+                printf("+-+--------------------------------------------+\n");
+                printf("|1| - At first                                 |\n");
+                printf("|2| - From the end(do not work in this version)|\n");
+                //printf("|0| - Exit        |\n");
+                printf("Command:\n");
                 scanf("%d", &f1);
                 if(f1 == 1) output_list(q);
-                else if(f1 == 2) output_list_reverse(q);
+                //else if(f1 == 2) output_list_reverse(q);
             }
         }
 
