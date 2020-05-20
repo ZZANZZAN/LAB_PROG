@@ -7,8 +7,6 @@
 
 int str_len(char *s);
 
-int charToInt(char numeric);
-
 void split(char *mes, head *q);
 
 #endif // SPLIT_H_INCLUDED
