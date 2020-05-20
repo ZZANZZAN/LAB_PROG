@@ -8,11 +8,6 @@ int str_len(char *s){
     return r;
 }
 
-
-int charToInt(char numeric){
-    return numeric - 48;
-}
-
 void split(char *mes, head *q){
     node *temp = NULL;
 
