@@ -9,6 +9,6 @@ LAB10---------------done
 
 LAB11---------------done
 
-LAB12---------in process
+LAB12---------------done
 
 LAB13---------in process
