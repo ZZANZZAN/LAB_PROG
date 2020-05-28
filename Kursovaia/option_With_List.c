@@ -1,0 +1,161 @@
+#include "HF/option_With_List.h"
+
+void malloc_node(node *temp){
+    temp -> data = malloc(sizeof(group));
+    temp -> data -> currency = malloc(30 * sizeof(char));
+    temp -> data -> type_of_money = malloc(30 * sizeof(char));
+    temp -> data -> country = malloc(30 * sizeof(char));
+    temp -> data -> name = malloc(30 * sizeof(char));
+}
+
+
+head *create_head_DLL(){
+    head *p = NULL;
+
+    p = malloc(sizeof(head));
+    if(p){
+        p -> N = 0;
+        p -> first = NULL;
+        p -> last = NULL;
+    }
+
+    return p;
+}
+
+
+node *create_node_DLL(head *q){
+    node *temp;
+
+    temp = malloc(sizeof(node));
+    malloc_node(temp);
+
+    temp -> prev = NULL;
+    temp -> next = NULL;
+    temp -> id = q -> N + 1;
+
+    q -> N += 1;
+    q -> first = temp;
+    q -> last = temp;
+
+    return temp;
+}
+
+
+void add_last_DLL(head *q){
+    node *temp = NULL;
+
+    temp = (node*)malloc(sizeof(node));
+    malloc_node(temp);
+
+    temp -> next = NULL;
+    temp -> id = ((q -> N) + 1);
+    temp -> prev = q -> last;
+
+    q -> last -> next = temp;
+    q -> last = temp;
+    q -> N += 1;
+}
+
+
+node *add_first_DLL(head *q){
+    node *temp;
+
+    temp = (node*)malloc(sizeof(node));
+    malloc_node(temp);
+
+    temp -> prev = NULL;
+    temp -> next = (q -> first);
+    temp -> id = 1;
+
+    q -> first -> prev = temp;
+    q -> N += 1;
+    q -> first = temp;
+
+    while(temp -> next != NULL){
+        temp = temp -> next;
+        temp -> id += 1;
+    }
+    //return temp;
+}
+
+
+void delete_first_DLL(head *q){
+    node *temp = NULL;
+
+    temp = q -> first;
+
+    q -> first = (temp -> next);
+    q -> first -> prev = NULL;
+    q -> N -= 1;
+
+    if((q -> N) == 0) q -> last = NULL;
+
+    free_node(temp);
+}
+
+
+void delete_node_DLL(node *temp, head *q){
+    q -> N -= 1;
+    temp = temp -> next;
+
+    if((temp -> next) != NULL){
+        temp -> next -> prev = temp -> prev;
+        temp -> prev -> next = temp -> next;
+    }
+    else {
+        q -> last = temp -> prev;
+        q -> last -> next = NULL;
+    }
+
+    free_node(temp);
+}
+
+node edit_DLL(node *lst){
+    node *temp, *p;
+    temp = (node*)malloc(sizeof(node));
+    malloc_node(temp);
+    p = lst->next;
+    lst->next = temp;
+    temp->next = p;
+    temp->prev = lst;
+    temp -> id = ((lst -> id) + 1);
+    if (p != NULL)
+        p->prev = temp;
+
+
+//return temp;
+}
+
+node *insert_after_DLL(node *lst, int N){
+    node *temp, *p;
+    temp = (node*)malloc(sizeof(node));
+    malloc_node(temp);
+    p = lst->prev;
+    p -> next = temp;
+    temp -> prev = p;
+    temp -> next = lst;
+    lst -> prev = temp;
+
+    temp -> id = (lst -> id);
+    lst -> id += 1;
+    while(lst -> next != NULL){
+        lst = lst -> next;
+        lst -> id += 1;
+    }
+    if (p != NULL)
+        p->prev = temp;
+
+
+return temp;
+}
+
+void sorting_id(head *q){
+    node *temp = NULL;
+    temp = q -> first;
+    int i = 1;
+    temp -> id = i;
+    while(temp -> next != NULL){
+        temp = temp -> next;
+        temp -> id = ++i;
+    }
+}
