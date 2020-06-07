@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1589137256 source:d:\Нужно\programming\kursovaia\1search.c
+	"HF/search.h"
+
+1591125500 d:\Нужно\programming\kursovaia\hf\search.h
+	"struct.h"
+	"option_With_List.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1590705226 d:\Нужно\programming\kursovaia\hf\struct.h
+	<stdlib.h>
+
+1591169063 d:\Нужно\programming\kursovaia\hf\option_with_list.h
+	"free_List.h"
+	"struct.h"
+	<malloc.h>
+	<stdlib.h>
+
+1591125496 d:\Нужно\programming\kursovaia\hf\free_list.h
+	"struct.h"
+	<stdlib.h>
+
+1591169573 source:d:\Нужно\programming\kursovaia\command_selecting.c
+	"HF/command_selecting.h"
+
+1591125494 d:\Нужно\programming\kursovaia\hf\command_selecting.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"option_With_List.h"
+	"Program_output_input.h"
+	"split.h"
+	"search.h"
+
+1591139091 d:\Нужно\programming\kursovaia\hf\program_output_input.h
+	<stdio.h>
+	"struct.h"
+	<stdlib.h>
+	"option_With_List.h"
+	"split.h"
+	<string.h>
+
+1591125502 d:\Нужно\programming\kursovaia\hf\split.h
+	"option_With_List.h"
+	"struct.h"
+	<stdlib.h>
+
+1590527474 source:d:\Нужно\programming\kursovaia\free_list.c
+	"HF/free_List.h"
+
+1591177709 source:d:\Нужно\programming\kursovaia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"HF\option_With_LIst.h"
+	"HF\struct.h"
+	"HF\free_List.h"
+	"HF\Program_output_input.h"
+	"HF\command_selecting.h"
+
+1591169137 source:d:\Нужно\programming\kursovaia\option_with_list.c
+	"HF/option_With_List.h"
+
+1591169137 source:d:\Нужно\programming\kursovaia\program_output_input.c
+	"HF/Program_output_input.h"
+
+1590535968 source:d:\Нужно\programming\kursovaia\search.c
+	"HF/search.h"
+
+1590705226 source:d:\Нужно\programming\kursovaia\split.c
+	"HF/split.h"
+
